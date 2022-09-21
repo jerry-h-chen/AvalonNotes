@@ -183,6 +183,7 @@ class _AvalonBoardState extends State<AvalonBoard> {
   }
 
   List<Widget> _getAccusedPlayerWidgets(List<AvalonPlayer> accusations) {
+    accusations.sort((p1, p2) => p1.displayName.compareTo(p2.displayName));
     return accusations.map(
       (accusation) {
         return Container(
