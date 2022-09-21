@@ -41,7 +41,9 @@ class _AvalonPlayersState extends State<AvalonPlayers> {
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints boxConstraints) {
-          final double canvasHeight = boxConstraints.maxHeight - 164;
+          // TODO: move this into avalon_board
+          // Value (214) is calculated from the menu space.
+          final double canvasHeight = boxConstraints.maxHeight - 214;
           return Column(
             children: [
               AvalonBoard(boardWidth: boxConstraints.maxWidth, boardHeight: canvasHeight),

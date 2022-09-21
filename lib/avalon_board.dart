@@ -37,48 +37,51 @@ class _AvalonBoardState extends State<AvalonBoard> {
     _assignPlayerLocations();
     List<Offset> playerLocations = playerLocationToPlayer.keys.toList();
     return Column(children: [
-      GestureDetector(
-        onTapUp: (details) => setState(() => _handlePossiblePlayerTap(details)),
-        onPanStart: (details) {
-          final Offset currentLocation = details.localPosition;
-          final Offset? tappedCircleCenter =
-              getCircleCenterForCircleAtLocation(currentLocation, playerLocations, radius);
-          activePlayer = playerLocationToPlayer[tappedCircleCenter];
-        },
-        onPanUpdate: (details) => setState(() {
-          final Offset currentLocation = details.localPosition;
-          currentDraggingLocation = currentLocation;
-        }),
-        onPanEnd: (details) => setState(() {
-          AvalonPlayer? targetPlayer = _getPlayerAtLocation(currentDraggingLocation!, 3);
-          if (activePlayer != null &&
-              targetPlayer != null &&
-              !activePlayer!.accusations.contains(targetPlayer)) {
-            activePlayer!.accusations.add(targetPlayer);
-          }
-          activePlayer = null;
-          currentDraggingLocation = null;
-        }),
-        onLongPressStart: (details) {
-          final Offset currentLocation = details.localPosition;
-          final Offset? tappedCircleCenter =
-              getCircleCenterForCircleAtLocation(currentLocation, playerLocations, radius);
-          if (tappedCircleCenter == null) {
-            return;
-          }
-          _handlePlayerDialog(playerLocationToPlayer[tappedCircleCenter]!);
-        },
-        child: CustomPaint(
-          // The shallow copies are a hacky way to create one-use copies of the players before
-          // passing them to the painter. This allows us to correctly use shouldRepaint().
-          painter: AvalonPainter(
-            radius: radius,
-            playerToPlayerLocation: playerLocationToPlayer.inverse
-                .map((player, location) => MapEntry(player.shallowCopy(), location)),
-            activePlayer: activePlayer?.shallowCopy(),
-            currentDraggingLocation: currentDraggingLocation,
+      Container(
+        padding: EdgeInsets.only(top: 50, left: 10, right: 10),
+        child: GestureDetector(
+          onTapUp: (details) => setState(() => _handlePossiblePlayerTap(details)),
+          onPanStart: (details) {
+            final Offset currentLocation = details.localPosition;
+            final Offset? tappedCircleCenter =
+                getCircleCenterForCircleAtLocation(currentLocation, playerLocations, radius);
+            activePlayer = playerLocationToPlayer[tappedCircleCenter];
+          },
+          onPanUpdate: (details) => setState(() {
+            final Offset currentLocation = details.localPosition;
+            currentDraggingLocation = currentLocation;
+          }),
+          onPanEnd: (details) => setState(() {
+            AvalonPlayer? targetPlayer = _getPlayerAtLocation(currentDraggingLocation!, 3);
+            if (activePlayer != null &&
+                targetPlayer != null &&
+                !activePlayer!.accusations.contains(targetPlayer)) {
+              activePlayer!.accusations.add(targetPlayer);
+            }
+            activePlayer = null;
+            currentDraggingLocation = null;
+          }),
+          onLongPressStart: (details) {
+            final Offset currentLocation = details.localPosition;
+            final Offset? tappedCircleCenter =
+                getCircleCenterForCircleAtLocation(currentLocation, playerLocations, radius);
+            if (tappedCircleCenter == null) {
+              return;
+            }
+            _handlePlayerDialog(playerLocationToPlayer[tappedCircleCenter]!);
+          },
+          child: CustomPaint(
+            // The shallow copies are a hacky way to create one-use copies of the players before
+            // passing them to the painter. This allows us to correctly use shouldRepaint().
+            painter: AvalonPainter(
+              radius: radius,
+              playerToPlayerLocation: playerLocationToPlayer.inverse
+                  .map((player, location) => MapEntry(player.shallowCopy(), location)),
+              activePlayer: activePlayer?.shallowCopy(),
+              currentDraggingLocation: currentDraggingLocation,
+            ),
+            size: Size(widget.boardWidth - 20, widget.boardHeight),
           ),
-          size: Size(widget.boardWidth, widget.boardHeight),
         ),
       ),
       // Reset and add/remove player buttons
@@ -151,22 +154,22 @@ class _AvalonBoardState extends State<AvalonBoard> {
     late final List<Offset> playerLocations;
     switch (players.length) {
       case 6:
-        playerLocations = setSixPlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setSixPlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
       case 7:
-        playerLocations = setSevenPlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setSevenPlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
       case 8:
-        playerLocations = setEightPlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setEightPlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
       case 9:
-        playerLocations = setNinePlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setNinePlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
       case 10:
-        playerLocations = setTenPlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setTenPlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
       default:
-        playerLocations = setTenPlayerConfig(widget.boardWidth, widget.boardHeight, radius);
+        playerLocations = setTenPlayerConfig(widget.boardWidth - 20, widget.boardHeight, radius);
         break;
     }
     for (int i = 0; i < playerLocations.length; i++) {

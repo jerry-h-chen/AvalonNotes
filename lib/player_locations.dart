@@ -1,14 +1,9 @@
 import 'dart:math';
 import 'dart:ui';
 
-const double xEdgeOffset = 20;
-const double yEdgeOffset = 80;
-
 List<Offset> setSixPlayerConfig(double boardWidth, double boardHeight, double playerCircleRadius) {
-  double xStart = playerCircleRadius + xEdgeOffset,
-      xEnd = boardWidth - playerCircleRadius - xEdgeOffset;
-  double yStart = playerCircleRadius + yEdgeOffset,
-      yEnd = boardHeight - playerCircleRadius - yEdgeOffset;
+  double xStart = playerCircleRadius, xEnd = boardWidth - playerCircleRadius;
+  double yStart = playerCircleRadius, yEnd = boardHeight - playerCircleRadius;
 
   if (yEnd - yStart > xEnd - xStart) {
     yEnd = yStart + (xEnd - xStart);
@@ -30,10 +25,8 @@ List<Offset> setSixPlayerConfig(double boardWidth, double boardHeight, double pl
 
 List<Offset> setSevenPlayerConfig(
     double boardWidth, double boardHeight, double playerCircleRadius) {
-  double xStart = playerCircleRadius + xEdgeOffset,
-      xEnd = boardWidth - playerCircleRadius - xEdgeOffset;
-  double yStart = playerCircleRadius + yEdgeOffset,
-      yEnd = boardHeight - playerCircleRadius - yEdgeOffset;
+  double xStart = playerCircleRadius, xEnd = boardWidth - playerCircleRadius;
+  double yStart = playerCircleRadius, yEnd = boardHeight - playerCircleRadius;
 
   if (yEnd - yStart > xEnd - xStart) {
     yEnd = yStart + (xEnd - xStart);
@@ -74,10 +67,8 @@ List<Offset> setSevenPlayerConfig(
 
 List<Offset> setEightPlayerConfig(
     double boardWidth, double boardHeight, double playerCircleRadius) {
-  double xStart = playerCircleRadius + xEdgeOffset,
-      xEnd = boardWidth - playerCircleRadius - xEdgeOffset;
-  double yStart = playerCircleRadius + yEdgeOffset,
-      yEnd = boardHeight - playerCircleRadius - yEdgeOffset;
+  double xStart = playerCircleRadius, xEnd = boardWidth - playerCircleRadius;
+  double yStart = playerCircleRadius, yEnd = boardHeight - playerCircleRadius;
 
   if (yEnd - yStart > xEnd - xStart) {
     yEnd = yStart + (xEnd - xStart);
@@ -120,10 +111,8 @@ List<Offset> setEightPlayerConfig(
 }
 
 List<Offset> setNinePlayerConfig(double boardWidth, double boardHeight, double playerCircleRadius) {
-  double xStart = playerCircleRadius + xEdgeOffset,
-      xEnd = boardWidth - playerCircleRadius - xEdgeOffset;
-  double yStart = playerCircleRadius + yEdgeOffset,
-      yEnd = boardHeight - playerCircleRadius - yEdgeOffset;
+  double xStart = playerCircleRadius, xEnd = boardWidth - playerCircleRadius;
+  double yStart = playerCircleRadius, yEnd = boardHeight - playerCircleRadius;
 
   if (yEnd - yStart > xEnd - xStart) {
     yEnd = yStart + (xEnd - xStart);
@@ -175,10 +164,8 @@ List<Offset> setNinePlayerConfig(double boardWidth, double boardHeight, double p
 }
 
 List<Offset> setTenPlayerConfig(double boardWidth, double boardHeight, double playerCircleRadius) {
-  double xStart = playerCircleRadius + xEdgeOffset,
-      xEnd = boardWidth - playerCircleRadius - xEdgeOffset;
-  double yStart = playerCircleRadius + yEdgeOffset,
-      yEnd = boardHeight - playerCircleRadius - yEdgeOffset;
+  double xStart = playerCircleRadius, xEnd = boardWidth - playerCircleRadius;
+  double yStart = playerCircleRadius, yEnd = boardHeight - playerCircleRadius;
 
   if (yEnd - yStart > xEnd - xStart) {
     yEnd = yStart + (xEnd - xStart);
